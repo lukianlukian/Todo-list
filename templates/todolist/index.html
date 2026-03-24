@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Todo list
+    <a href="{% url 'todolist:task-create' %}" class="btn btn-primary">
+      Add task
+    </a>
+  </h1>
+
+  <strong>Tasks:</strong> {{ num_tasks }}
+
+  {% for task in tasks %}
+    <article class="mt-3 mb-3 p-3 border rounded">
+      <h3>
+        {{ task.content }}
+        {% if task.done_or_no %}
+          <span class="text-success">Done</span>
+        {% else %}
+          <span class="text-danger">Not done</span>
+        {% endif %}
+      </h3>
+
+      <p><strong>Created at:</strong> {{ task.created_at }}</p>
+      <p><strong>Deadline:</strong> {{ task.deadline|default:"No deadline" }}</p>
+
+      <p>
+        <strong>Tags:</strong>
+        {% for tag in task.tags.all %}
+          {{ tag.name }}{% if not forloop.last %}, {% endif %}
+        {% empty %}
+          No tags
+        {% endfor %}
+      </p>
+
+      <a class="btn btn-secondary" href="{% url 'todolist:task-update' pk=task.id %}">
+        Update
+      </a>
+
+      <a class="btn btn-danger" href="{% url 'todolist:task-delete' pk=task.id %}">
+        Delete
+      </a>
+
+      {% if task.done_or_no %}
+        <a class="btn btn-warning" href="{% url 'todolist:task-toggle' pk=task.id %}">
+          Undo
+        </a>
+      {% else %}
+        <a class="btn btn-success" href="{% url 'todolist:task-toggle' pk=task.id %}">
+          Complete
+        </a>
+      {% endif %}
+    </article>
+  {% empty %}
+    <p>No tasks yet.</p>
+  {% endfor %}
+{% endblock %}
