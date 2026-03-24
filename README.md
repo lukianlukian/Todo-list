@@ -1,11 +1,11 @@
 # 📝 Todo List
+Simple Todo List web app built with Django.
+You can create tasks, mark them as complete, and organize them with tags.
 
 ## pages:
 <img width="1882" height="842" alt="image" src="https://github.com/user-attachments/assets/54bf26bb-c834-480f-95d1-1727fa859663" />
 <img width="1907" height="686" alt="image" src="https://github.com/user-attachments/assets/eaf36b96-9745-49b2-b996-d648d44ee2c1" />
 
-Simple Todo List web app built with Django.
-You can create tasks, mark them as complete, and organize them with tags.
 
 ## Run project
 
