@@ -8,7 +8,7 @@ from .views import (
     TaskCreateView,
     TaskDeleteView,
     TaskUpdateView,
-    toggle_task_status,
+    ToggleTaskStatusView,
 )
 
 app_name = "todolist"
@@ -22,5 +22,5 @@ urlpatterns = [
     path("task/create/", TaskCreateView.as_view(), name="task-create"),
     path("task/<int:pk>/", TaskUpdateView.as_view(), name="task-update"),
     path("tasks/<int:pk>/delete/", TaskDeleteView.as_view(), name="task-delete"),
-    path("tasks/<int:pk>/toggle/", toggle_task_status, name="task-toggle"),
+    path("tasks/<int:pk>/toggle/", ToggleTaskStatusView.as_view(), name="task-toggle"),
 ]
